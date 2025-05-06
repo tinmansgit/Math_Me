@@ -1,14 +1,16 @@
 import logging
+from datetime import datetime
 
-log_error_file = '/bin/Python/Math_Me/log_math-me_error.log'
-debug_log_file = '/bin/Python/Math_Me/log_math-me_debug.log'
+current_date = datetime.now().strftime('%Y-%m-%d')
+error_log_file = f'~/bin/Python/Math_Me/log_error_mathme_{current_date}.log'
+debug_log_file = f'~/bin/Python/Math_Me/log_debug_mathme_{current_date}.log'
 
 logger = logging.getLogger('app_logger')
 logger.setLevel(logging.DEBUG)
 
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', '%Y-%m-%d %H:%M:%S')
 
-error_handler = logging.FileHandler(log_error_file, mode='a', encoding='utf-8')
+error_handler = logging.FileHandler(error_log_file, mode='a', encoding='utf-8')
 error_handler.setLevel(logging.ERROR)
 error_handler.setFormatter(formatter)
 logger.addHandler(error_handler)
